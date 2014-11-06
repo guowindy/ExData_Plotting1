@@ -15,6 +15,7 @@ td<-(as.POSIXct(subguo$dt))
 
 ## layout
 par(mfrow=c(2,2))
+par(mar=c(4,4,2,1));par(oma=c(0,0,0,0))
 plot(td,hdata, ylab='Global Active Power (kilowatts)',xlab='', type="l")
 plot(td,as.numeric(subguo$Voltage),ylab='Voltage',xlab='datetime',type="l")
 
@@ -22,10 +23,10 @@ plot(td,as.numeric(subguo$Voltage),ylab='Voltage',xlab='datetime',type="l")
 plot(td,data3[1,],ylab='Energy sub metering',xlab='', type="l",col="black")
 lines(td,data3[2,],type="l",col="red")
 lines(td,data3[3,],type="l",col="blue")
-legend("topright",legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),col = c("black","red","blue"),lty = c(1, 1, 1),inset=0.01,box.col= "white",bg = par("bg")) # optional legend
+legend("topright",legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),col = c("black","red","blue"),lty = c(1, 1, 1),bty = "n") # optional legend
 plot(td,as.numeric(subguo$Global_reactive_power),ylab='Global_reactive_power',xlab='datetime',type="l")
 
 
 ##  save as png
-dev.copy(png, file = "plot4.png") ## copy plot to a PNG file
+dev.copy(png, file = "plot4.png", height=480, width=480 ) ## copy plot to a PNG file
 dev.off() ## close the PNG device!
